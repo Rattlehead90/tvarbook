@@ -2,12 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
+
 
 @layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  .btn-login {
+    @apply ;
+  }
+
+  .input-login {
+    @apply border-gray-300 rounded-lg w-[360px] h-14 mx-auto;
+  }
+
+  .button-login {
+    @apply bg-blue-600 text-white w-[360px] rounded-lg h-12 font-bold text-xl transition hover:bg-blue-700 mt-1 mb-2 p-3;
+  }
+
+  .signup-button {
+    @apply bg-green-500 text-white h-12 font-bold rounded-lg p-3 w-[200px] mx-auto m-4 transition hover:bg-green-600;
   }
 }
 
-*/
+
