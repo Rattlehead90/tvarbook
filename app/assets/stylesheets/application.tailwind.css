@@ -21,12 +21,20 @@
     @apply bg-green-500 text-white h-12 font-bold rounded-lg p-3 w-[200px] mx-auto m-4 transition hover:bg-green-600;
   }
 
-  .avatar-navbar {
+  .avatar-round {
     @apply w-10 rounded-full hover:saturate-50;
   }
   
   .button-navbar {
     @apply w-10 bg-gray-300 p-3 rounded-full hover:bg-gray-400;
+  }
+
+  .sidemenu-option {
+    @apply flex gap-4 font-semibold hover:bg-gray-300 p-3 hover:rounded-full;
+  }
+
+  .small-font-links {
+    @apply underline m-2 text-gray-700 hover:text-gray-400 hover:no-underline;
   }
 }
 
