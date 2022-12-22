@@ -30,11 +30,19 @@
   }
 
   .sidemenu-option {
-    @apply flex gap-4 font-semibold hover:bg-gray-300 p-3 hover:rounded-full;
+    @apply flex gap-4 font-semibold hover:bg-gray-200 p-3 hover:rounded-full;
   }
 
   .small-font-links {
     @apply underline m-2 text-gray-700 hover:text-gray-400 hover:no-underline;
+  }
+
+  .input-field {
+    @apply font-normal w-[100%] rounded-full border-transparent focus:border-transparent focus:ring-0 bg-gray-200 hover:bg-gray-300;
+  }
+
+  .button-prompt {
+    @apply flex items-center justify-center gap-2 w-56 font-semibold text-gray-600 hover:bg-gray-200 p-2 hover:rounded-xl;
   }
 }
 
