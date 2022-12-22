@@ -4,7 +4,7 @@
       <%= image_tag('home', class: "w-7") %>Home
     <% end %>
     <%= link_to '', class: "sidemenu-option" do %> 
-      <%= image_tag('my_avatar', class: "avatar-round w-7") %>
+      <%= image_tag(current_user.gravatar_url, class: "avatar-round w-7") %>
       <%= current_user.name %> <%= current_user.last_name %>
     <% end %>
     <hr class="h-[1px] border-none text-gray-300 bg-gray-300">
