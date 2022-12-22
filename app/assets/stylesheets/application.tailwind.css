@@ -38,7 +38,7 @@
   }
 
   .input-field {
-    @apply font-normal w-[100%] rounded-full border-transparent focus:border-transparent focus:ring-0 bg-gray-200 hover:bg-gray-300;
+    @apply font-semibold w-[100%] rounded-full border-transparent focus:border-transparent focus:ring-0 bg-gray-200 hover:bg-gray-300;
   }
 
   .button-prompt {
