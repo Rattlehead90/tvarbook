@@ -14,7 +14,7 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <main class="font-exo bg-gray-100 h-screen">
+    <main class="font-exo bg-gray-100 h-screen overflow-y-scroll">
       <%= render 'layouts/navbar' if user_signed_in? %>
       <%= yield %>
     </main>

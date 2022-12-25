@@ -1,0 +1,21 @@
+<div class="bg-white rounded-xl p-4 flex flex-col justify-between h-36">
+    <div class="flex gap-2 mb-4">
+      <%= image_tag current_user.gravatar_url, class: "avatar-round" %>
+      <%= text_field_tag :post_message, nil, placeholder: "What's on your mind, #{current_user.name}?", class: "input-field" %>
+    </div>
+    <hr class="mb-4">
+    <div class="flex justify-around">
+      <div class="button-prompt">
+        <%= image_tag 'video-camera-with-play-button', class: "w-8" %>
+        <p>Live video</p>
+      </div>
+      <div class="button-prompt">
+        <%= image_tag 'images', class: "w-8" %>
+        <p>Photo/video</p>
+      </div>
+      <div class="button-prompt">
+        <%= image_tag 'emoticon', class: "w-8" %>
+        <p>Feeling/activity</p>
+      </div>
+    </div>
+  </div>

@@ -1,23 +1,19 @@
 <div class="col-span-2 mt-5 w-[590px] justify-self-center">
-  <div class="bg-white rounded-xl p-4 flex flex-col justify-between h-36">
-    <div class="flex gap-2 mb-4">
-      <%= image_tag current_user.gravatar_url, class: "avatar-round" %>
-      <%= text_field_tag :post_message, nil, placeholder: "What's on your mind, #{current_user.name}?", class: "input-field" %>
-    </div>
-    <hr class="mb-4">
-    <div class="flex justify-around">
-      <div class="button-prompt">
-        <%= image_tag 'video-camera-with-play-button', class: "w-8" %>
-        <p>Live video</p>
+  <%= render 'post_prompt' %>
+  <div>
+    <% @posts.each do |post| %>
+      <div class="flex flex-col bg-white p-4 rounded-xl my-4">
+        <div class="flex">
+          <%= image_tag post.user.gravatar_url, class: "avatar-round" %>
+          <div class="px-2">
+            <p class="font-semibold"><%= post.user.name %> <%= post.user.last_name %></p>
+            <p class="font-extralight text-sm"><%= post.created_at.strftime("%e of %B at %H:%M") %></p>
+          </div>
+        </div>
+        <div class="mt-2">
+          <%= post.body %>
+        </div>
       </div>
-      <div class="button-prompt">
-        <%= image_tag 'images', class: "w-8" %>
-        <p>Photo/video</p>
-      </div>
-      <div class="button-prompt">
-        <%= image_tag 'emoticon', class: "w-8" %>
-        <p>Feeling/activity</p>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>
