@@ -30,7 +30,7 @@
   }
 
   .sidemenu-option {
-    @apply flex gap-4 font-semibold hover:bg-gray-200 p-3 hover:rounded-full;
+    @apply flex gap-4 font-semibold hover:bg-gray-200 p-3 hover:rounded-full items-center;
   }
 
   .small-font-links {
