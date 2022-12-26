@@ -1,6 +1,6 @@
 <div class="bg-white rounded-xl p-4 flex flex-col justify-between h-36">
     <div class="flex gap-2 mb-4">
-      <%= link_to users_show_path, class: "w-12 my-auto" do %>
+      <%= link_to user_path(current_user), class: "w-12 my-auto" do %>
         <%= image_tag current_user.gravatar_url, class: "avatar-round" %>
       <% end %>
       <%= text_field_tag :post_message, nil, placeholder: "What's on your mind, #{current_user.name}?", class: "input-field" %>

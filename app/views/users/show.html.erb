@@ -1,13 +1,16 @@
-<div class="flex flex-col items-center justify-center mt-12">
-  <%= image_tag @user.gravatar_url, class:"w-32 avatar-round mb-6" %>
-  <p class="font-bold text-4xl"><%= @user.name %> <%= @user.last_name %></p>
-</div>
-<div>
-  Friends: 
-  <% @friends.each do |friend| %>
-    <div>
-      <%= image_tag friend.gravatar_url, class: "avatar-round" %>
-      <%= friend.name[0] %>. <%= friend.last_name %>
-    </div>
-  <% end %>
+<div class="flex flex-col justify-center items-center gap-4">
+  <div class="flex flex-col items-center justify-center mt-12">
+    <%= image_tag @user.gravatar_url, class:"w-32 avatar-round mb-6" %>
+    <p class="font-bold text-4xl"><%= @user.name %> <%= @user.last_name %></p>
+  </div>
+  <%= button_to 'Add friend', invitations_create_path(id: @user.id), class: "button-friend" %>
+  <div class="mx-auto w-96">
+    Friends:
+    <% @friends.each do |friend| %>
+      <div>
+        <%= image_tag friend.gravatar_url, class: "avatar-round" %>
+        <%= friend.name[0] %>. <%= friend.last_name %>
+      </div>
+    <% end %>
+  </div>
 </div>

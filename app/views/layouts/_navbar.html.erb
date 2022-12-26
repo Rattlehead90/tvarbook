@@ -6,7 +6,11 @@
   </div>
   <div class="flex items-center justify-between w-36">
     <%= link_to image_tag('messenger', class: "button-navbar") %>
-    <%= link_to image_tag('bell', class: "button-navbar") %>
+    <% if current_user.pending_invitations.empty? %>
+      <%= link_to image_tag('bell', class: "button-navbar") %>
+    <% else %>
+      <%= link_to image_tag('notification', class: "button-navbar") %>
+    <% end %>
     <div data-controller="logout">
       <div data-logout-target = "avatar">
         <%= image_tag(current_user.gravatar_url, class: "avatar-round hover:cursor-pointer", data: { action: "click->logout#pop" }) %>
