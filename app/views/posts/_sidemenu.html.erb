@@ -3,7 +3,7 @@
     <%= link_to '', class: "sidemenu-option" do %> 
       <%= image_tag('home', class: "w-7") %>Home
     <% end %>
-    <%= link_to users_show_path, class: "sidemenu-option w-auto" do %> 
+    <%= link_to user_path(current_user), class: "sidemenu-option w-auto" do %> 
       <%= image_tag(current_user.gravatar_url, class: "avatar-round w-7") %>
       <%= current_user.name %> <%= current_user.last_name %>
     <% end %>
