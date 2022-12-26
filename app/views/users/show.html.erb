@@ -1,4 +1,13 @@
+<div class="flex flex-col items-center justify-center mt-12">
+  <%= image_tag current_user.gravatar_url, class:"w-64 avatar-round mb-6" %>
+  <p class="font-bold text-4xl"><%= current_user.name %> <%= current_user.last_name %></p>
+</div>
 <div>
-  <h1 class="font-bold text-4xl">Users#show</h1>
-  <p>Find me in app/views/users/show.html.erb</p>
+  Friends: 
+  <% @friends.each do |friend| %>
+    <div>
+      <%= image_tag friend.gravatar_url, class: "avatar-round" %>
+      <%= friend.name[0] %>. <%= friend.last_name %>
+    </div>
+  <% end %>
 </div>
