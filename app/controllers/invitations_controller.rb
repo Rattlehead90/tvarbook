@@ -1,7 +1,14 @@
 class InvitationsController < ApplicationController
   def create
     user = User.find(params[:id])
-    current_user.send_invitation(user)
+    invitation = Invitation.find_invitation(current_user.id, user.id)
+
+    if Invitation.reacted?(user.id, current_user.id)
+      invitation.confirmed = true
+      invitation.save
+    else 
+      current_user.send_invitation(user)
+    end 
 
     redirect_to user
   end

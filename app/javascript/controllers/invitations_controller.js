@@ -11,6 +11,9 @@ export default class extends Controller {
       const notification = this.notificationTarget;
       // parent pop div
       const pop = document.createElement('div');
+      // get the friend requests
+      const invite = this.data.get("friends")
+      console.log(invite)
     }
   }
 }
