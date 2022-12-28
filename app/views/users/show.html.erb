@@ -3,7 +3,17 @@
     <%= image_tag @user.gravatar_url, class:"w-32 avatar-round mb-6" %>
     <p class="font-bold text-4xl"><%= @user.name %> <%= @user.last_name %></p>
   </div>
-  <%= button_to 'Add friend', invitations_create_path(id: @user.id), class: "button-friend" %>
+    <% unless @user == current_user %>
+      <% if !current_user.friends_with?(@user) %>
+        <% unless @invitation %>
+          <%= button_to 'Add friend', invitations_create_path(id: @user.id), class: "button-friend" %>
+        <% else %>
+          <%= button_to 'Request sent', invitations_destroy_path(id: @user.id), class: "button-friend bg-gray-300 hover:bg-red-500" %>
+        <% end %>
+      <% else %>
+        <%= button_to 'Friend', invitations_update_path(id: @user.id), class: "button-friend bg-green-600 hover:bg-red-500" %>
+      <% end %>
+    <% end %>
   <div class="mx-auto w-96">
     Friends:
     <% @friends.each do |friend| %>

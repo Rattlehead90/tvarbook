@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :posts
   post 'invitations/create'
+  post 'invitations/destroy'
+  post 'invitations/update'
   root 'posts#index'
 end

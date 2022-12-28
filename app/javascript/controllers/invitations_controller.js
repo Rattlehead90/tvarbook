@@ -11,7 +11,6 @@ export default class extends Controller {
       const notification = this.notificationTarget;
       // parent pop div
       const pop = document.createElement('div');
-      
     }
   }
 }
