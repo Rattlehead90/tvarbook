@@ -21,7 +21,10 @@ export default class extends Controller {
         option_pop.classList.add("hover:bg-gray-300", "rounded-xl", "p-2");
         pop.appendChild(option_pop);
       })
-      // style the pop
+      // add functionality to the pop
+      pop.addEventListener('mouseleave', () => {
+        this.mouseleave();
+      });
       // Styling of the pop div 
       pop.classList.add("shadow-xl", "border-2", "border-gray-50", "bg-white",
         "p-2", "w-48", "right-0", "top-12", "rounded-xl",
@@ -36,5 +39,11 @@ export default class extends Controller {
       const pop = document.getElementById('pop');
       notification.removeChild(pop);
     }
+  }
+
+  mouseleave() {
+    this.stateValue++
+    const pop = document.getElementById('pop');
+    pop.remove();
   }
 }
