@@ -46,4 +46,37 @@ export default class extends Controller {
     const pop = document.getElementById('pop');
     pop.remove();
   }
+
+  warning() {
+    // query the notification sign 
+    const notification = this.notificationTarget;
+    this.stateValue++
+    if (this.stateValue % 2 != 0) {
+      // parent pop div
+      const pop = document.createElement('div');
+      // get the friend requests
+      const friends_ids = this.data.get("friends");
+      const warning = document.createElement('p');
+      warning.textContent = 'No notifications'
+      warning.classList.add("p-2", "text-gray-500", "hover:cursor-default");
+      pop.appendChild(warning)
+
+      pop.addEventListener('mouseleave', () => {
+        this.mouseleave();
+      });
+      // Styling of the pop div 
+      pop.classList.add("shadow-xl", "border-2", "border-gray-50", "bg-white",
+        "p-2", "w-48", "right-0", "top-12", "rounded-xl",
+        "flex", "flex-col");
+
+      // Positioning of pop div
+      pop.id = 'pop';
+      pop.style.position = 'absolute';
+      // display pop
+      notification.appendChild(pop);
+    } else {
+      const pop = document.getElementById('pop');
+      notification.removeChild(pop);
+    }
+  }
 }

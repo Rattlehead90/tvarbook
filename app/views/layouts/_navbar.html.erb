@@ -9,7 +9,7 @@
     <div data-controller="invitations" data-invitations-friends="<%= current_user.requested_to_be_friends_with_by? %>">
       <div data-invitations-target = "notification">
         <% if current_user.pending_invitations.empty? %>
-          <%= image_tag('bell', class: "button-navbar hover:cursor-pointer", data: { action: "click->invitations#pop" }) %>
+          <%= image_tag('bell', class: "button-navbar hover:cursor-pointer", data: { action: "click->invitations#warning"}) %>
         <% else %>
           <%= image_tag('notification', class: "button-navbar hover:cursor-pointer", data: { action: "click->invitations#pop" }) %>
         <% end %>
