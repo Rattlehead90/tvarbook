@@ -23,6 +23,12 @@ class User < ApplicationRecord
     Invitation.confirmed_record?(id, user.id)
   end
 
+  def requested_to_be_friends_with_by?
+    arr = []
+    pending_invitations.each { |inv| arr << inv.user_id }
+    arr
+  end
+
   def send_invitation(user)
     invitations.create(friend_id: user.id)
   end

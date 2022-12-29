@@ -6,7 +6,7 @@
   </div>
   <div class="flex items-center justify-between w-36">
     <%= link_to image_tag('messenger', class: "button-navbar") %>
-    <div data-controller="invitations" data-invitations-friends="<%= current_user.pending_invitations.to_a %>">
+    <div data-controller="invitations" data-invitations-friends="<%= current_user.requested_to_be_friends_with_by? %>">
       <div data-invitations-target = "notification">
         <% if current_user.pending_invitations.empty? %>
           <%= image_tag('bell', class: "button-navbar hover:cursor-pointer", data: { action: "click->invitations#pop" }) %>
