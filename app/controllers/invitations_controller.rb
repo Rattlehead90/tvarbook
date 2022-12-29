@@ -3,7 +3,7 @@ class InvitationsController < ApplicationController
     user = User.find(params[:id])
     invitation = Invitation.find_invitation(current_user.id, user.id)
 
-    if Invitation.reacted?(user.id, current_user.id)
+    if Invitation.request_sent?(user.id, current_user.id)
       invitation.confirmed = true
       invitation.save
     else 

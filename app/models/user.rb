@@ -1,8 +1,7 @@
 class User < ApplicationRecord
   include Gravtastic
   gravtastic
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :posts
@@ -20,13 +19,11 @@ class User < ApplicationRecord
   end
 
   def friends_with?(user)
-    Invitation.confirmed_record?(id, user.id)
+    Invitation.request_confirmed?(id, user.id)
   end
 
   def requested_to_be_friends_with_by?
-    arr = []
-    pending_invitations.each { |inv| arr << inv.user_id }
-    arr
+    arr = pending_invitations.map(&:user_id)
   end
 
   def send_invitation(user)

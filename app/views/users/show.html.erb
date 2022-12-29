@@ -20,10 +20,11 @@
         <%= button_to 'Friend', invitations_update_path(id: @user.id), class: "button-friend bg-green-600 hover:bg-red-500" %>
       <% end %>
     <% end %>
-  <div class="mx-auto w-96">
-    Friends:
+  <h2>Friends:</h2>
+  <div class="mx-auto w-96 flex justify-center gap-5 items-center">
+
     <% @friends.each do |friend| %>
-      <div>
+      <div class="flex flex-col items-center">
         <%= image_tag friend.gravatar_url, class: "avatar-round" %>
         <%= friend.name[0] %>. <%= friend.last_name %>
       </div>

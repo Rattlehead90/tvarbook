@@ -18,7 +18,7 @@ export default class extends Controller {
         const option_pop = document.createElement('a');
         option_pop.textContent = 'Friend request';
         option_pop.href = `/users/${id}`;
-        option_pop.classList.add("hover:bg-gray-300", "rounded-xl", "p-2");
+        option_pop.classList.add("hover:bg-gray-300", "rounded-xl", "p-2", "text-red-300");
         pop.appendChild(option_pop);
       })
       // add functionality to the pop
