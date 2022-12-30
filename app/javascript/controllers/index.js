@@ -12,3 +12,6 @@ application.register("invitations", InvitationsController)
 
 import LogoutController from "./logout_controller"
 application.register("logout", LogoutController)
+
+import SearchFormController from "./search_form_controller"
+application.register("search-form", SearchFormController)

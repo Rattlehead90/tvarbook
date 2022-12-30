@@ -1,6 +1,16 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.includes(:user)
+    if params[:query].present?
+      @posts = Post.where(" LOWER (body) LIKE ?", "%#{params[:query]}%")
+    else
+      @posts = Post.all
+    end
+
+    if turbo_frame_request?
+      render partial: "posts", locals: { posts: @posts }
+    else
+      render :index 
+    end
   end
 
   def show
