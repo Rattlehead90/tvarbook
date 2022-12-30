@@ -3,7 +3,11 @@
       <%= link_to user_path(current_user), class: "w-12 my-auto" do %>
         <%= image_tag current_user.gravatar_url, class: "avatar-round" %>
       <% end %>
-      <%= text_field_tag :post_message, nil, placeholder: "What's on your mind, #{current_user.name}?", class: "input-field" %>
+      <%= form_with model: @post, class: "w-[100%]" do |prompt| %>
+        <%= prompt.text_field :body, placeholder: "What's on your mind, #{current_user.name}?", class: "input-field" %>
+        <% prompt.hidden_field :user_id, value: current_user.id %>
+        <% prompt.submit %>
+      <% end %>
     </div>
     <hr class="mb-4">
     <div class="flex justify-around">

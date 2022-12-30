@@ -1,15 +1,16 @@
 class PostsController < ApplicationController
   def index
-    if params[:query].present?
-      @posts = Post.where(" LOWER (body) LIKE ?", "%#{params[:query]}%")
-    else
-      @posts = Post.all
-    end
+    @post = current_user.posts.build
+    @posts = if params[:query].present?
+               Post.where(' LOWER (body) LIKE ?', "%#{params[:query]}%")
+             else
+               Post.all
+             end
 
     if turbo_frame_request?
-      render partial: "posts", locals: { posts: @posts }
+      render partial: 'posts', locals: { posts: @posts }
     else
-      render :index 
+      render :index
     end
   end
 
@@ -22,12 +23,11 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    if current_user.posts.create(post_params)
 
-    if @post.save
-      redirect_to index_path
+      redirect_to root_path
     else
-      render :new, status: :unprocessable_entity
+      render root_path, status: :unprocessable_entity
     end
   end
 
@@ -47,8 +47,14 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy 
+    @post.destroy
 
     redirect_to root_path, status: :see_other
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:body, :user_id)
   end
 end
