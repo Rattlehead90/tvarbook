@@ -24,9 +24,11 @@
   <div class="mx-auto w-96 flex justify-center gap-5 items-center">
 
     <% @friends.each do |friend| %>
-      <div class="flex flex-col items-center">
-        <%= image_tag friend.gravatar_url, class: "avatar-round" %>
-        <%= friend.name[0] %>. <%= friend.last_name %>
+      <div>
+        <%= link_to user_path(friend), class: "flex flex-col items-center" do %>
+          <%= image_tag friend.gravatar_url, class: "avatar-round" %>
+          <%= friend.name[0] %>. <%= friend.last_name %>
+        <% end %>
       </div>
     <% end %>
   </div>
