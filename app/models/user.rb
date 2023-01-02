@@ -29,4 +29,8 @@ class User < ApplicationRecord
   def send_invitation(user)
     invitations.create(friend_id: user.id)
   end
+
+  # Likes mechanic
+
+  has_many :likes, dependent: :destroy
 end
