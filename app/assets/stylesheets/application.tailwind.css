@@ -48,6 +48,10 @@
   .button-friend {
     @apply bg-blue-600 text-white w-36 rounded-lg h-12 font-semibold text-base transition hover:bg-blue-700;
   }
+
+  .button-like {
+    @apply flex hover:cursor-pointer items-center bg-gray-500 rounded-xl text-sm text-gray-50 font-bold px-2 py-1 hover:bg-blue-500 hover:text-gray-100;
+  }
 }
 
 

@@ -21,12 +21,20 @@
       <% end %>
     <% end %>
   </div>
-  <%= form_with model: @like, url: likes_create_path, method: :post, class: "mt-2" do |like_form| %>
-    <%= like_form.hidden_field :user_id, value: current_user.id %>
-    <%= like_form.hidden_field :reference_id, value: post.id %>
-    <%= like_form.hidden_field :reference_type, value: "Post" %>
-    <div class="flex items-center gap-2">
-      <%= like_form.submit "Like", class:"flex hover:cursor-pointer items-center bg-gray-500 rounded-xl text-sm text-gray-50 font-bold px-2 py-1 hover:bg-blue-700 hover:text-gray-100" %>
+  <% if !post.liked?(current_user) %>
+    <%= form_with model: @like, url: likes_create_path, method: :post, class: "mt-2" do |like_form| %>
+      <%= like_form.hidden_field :user_id, value: current_user.id %>
+      <%= like_form.hidden_field :reference_id, value: post.id %>
+      <%= like_form.hidden_field :reference_type, value: "Post" %>
+      <div class="flex items-center gap-2">
+        <%= like_form.submit 'Like', class:"button-like" %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="mt-2">
+      <%= button_to 'Unlike', likes_destroy_path(reference_id: post.id,
+                                                 user_id: current_user.id),
+                              method: :post, class: "button-like" %>
     </div>
   <% end %>
 </div>
