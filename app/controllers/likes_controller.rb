@@ -1,12 +1,9 @@
 class LikesController < ApplicationController
   def create
-    params[:like][:user_id] = current_user.id
-    @like = Like.new(like_params)
-
-    if @like.save
-      flash[:success] = 'You liked the post!'
+    if current_user.likes.create(like_params)
+      redirect_to root_path
     else
-      flash[:alert] = @like.errors.full_messages.join(', ')
+      render root_path, status: :unprocessable_entity
     end
   end
 

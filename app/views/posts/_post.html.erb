@@ -11,4 +11,22 @@
   <div class="mt-2">
     <%= post.body %>
   </div>
+  <div class="flex gap-2 items-center mt-4">
+    <% unless post.likes.count == 0 %>
+      <p class="font-light italic text-sm"><%= pluralize(post.likes.count, 'user') %> liked it: </p>
+    <% end %>
+    <% post.likes.each do |like| %>
+      <%= link_to user_path(like.user) do %>
+        <%= image_tag like.user.gravatar_url, class: "avatar-round w-6" %>
+      <% end %>
+    <% end %>
+  </div>
+  <%= form_with model: @like, url: likes_create_path, method: :post, class: "mt-2" do |like_form| %>
+    <%= like_form.hidden_field :user_id, value: current_user.id %>
+    <%= like_form.hidden_field :reference_id, value: post.id %>
+    <%= like_form.hidden_field :reference_type, value: "Post" %>
+    <div class="flex items-center gap-2">
+      <%= like_form.submit "Like", class:"flex hover:cursor-pointer items-center bg-gray-500 rounded-xl text-sm text-gray-50 font-bold px-2 py-1 hover:bg-blue-700 hover:text-gray-100" %>
+    </div>
+  <% end %>
 </div>
