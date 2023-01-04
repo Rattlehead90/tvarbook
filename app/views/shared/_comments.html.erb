@@ -1,0 +1,11 @@
+ <div class="mt-2">
+    <% reference.comments.each do |comment| %>
+      <div class="flex items-start gap-2 mt-2">
+        <%= image_tag current_user.gravatar_url, class: 'avatar-round h-7 w-auto mt-2' %>
+        <div class="flex flex-col items-start bg-gray-100 rounded-3xl p-3">
+          <h4 class="text-sm font-bold"><%= comment.user.name %> <%= comment.user.last_name %></h4>
+          <p class=""><%= comment.body %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>

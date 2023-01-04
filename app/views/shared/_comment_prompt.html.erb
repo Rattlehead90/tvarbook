@@ -1,0 +1,13 @@
+<div class="mt-4" data-controller="comment">
+    <%= form_with model: @comment, url: comments_create_path, method: :post, class: "flex items-center gap-2 h-8" do |form| %>
+      <%= link_to user_path(current_user) do %>
+        <%= image_tag current_user.gravatar_url, class: "avatar-round h-8 w-auto"%>
+      <% end %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+      <%= form.hidden_field :post_id, value: reference.id %>
+      <%= form.text_field :body, class: "input-field text-sm h-8", 
+                                 placeholder: "Write a comment...",
+                                 data: { comment_target: :input, action: 'focus->comment#pulse' } %>
+      <% form.submit %>
+    <% end %>
+  </div>
