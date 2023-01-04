@@ -17,9 +17,9 @@
     <% else %>
       <% if i == 3 %>
         <p data-comment-target="more" data-action="click->comment#expand" class="text-gray-400 italic text-sm font-bold mt-1 hover:cursor-pointer hover:text-gray-600" >
-          See <%= reference.comments.count - i - 1 %> more...
+          See <%= reference.comments.count - i %> more...
         </p>
-      <% elsif i > 3 %>
+      <% elsif i >= 3 %>
         <div class="flex items-start gap-2 mt-2 scale-0 absolute" 
              data-controller="comment" 
              data-action="mouseover->comment#showButton">
