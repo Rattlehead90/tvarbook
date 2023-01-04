@@ -11,16 +11,7 @@
   <div class="mt-2">
     <%= post.body %>
   </div>
-  <div class="flex gap-2 items-center mt-4">
-    <% unless post.likes.count == 0 %>
-      <p class="font-light italic text-sm"><%= pluralize(post.likes.count, 'user') %> liked it: </p>
-    <% end %>
-    <% post.likes.each do |like| %>
-      <%= link_to user_path(like.user) do %>
-        <%= image_tag like.user.gravatar_url, class: "avatar-round w-6" %>
-      <% end %>
-    <% end %>
-  </div>
+  <%= render 'shared/likes_preview', reference: post %>
   <%= render 'shared/like_button', reference: post, type: "Post" %>
 
   <div class="mt-2">

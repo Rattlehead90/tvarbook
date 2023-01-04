@@ -1,0 +1,27 @@
+<div class="flex gap-2 items-center mt-4">
+  <% unless reference.likes.count == 0 %>
+    <p class="font-light italic text-sm"><%= pluralize(reference.likes.count, 'user') %> liked it: </p>
+  <% end %>
+  <% if reference.likes.count < 3 %>
+    <% reference.likes.each do |like| %>
+      <%= link_to user_path(like.user) do %>
+        <%= image_tag like.user.gravatar_url, class: "avatar-round w-6" %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <% j = 3 %>
+    <% if reference.liked?(current_user) %>
+      <% j -= 1%>
+      <%= link_to user_path(current_user) do %>
+        <%= image_tag current_user.gravatar_url, class: "avatar-round w-6" %>
+      <% end %>
+    <% end %>
+    <% j.times do |i| %>
+      <% like = reference.likes[i] %>
+      <%= link_to user_path(like.user) do %>
+        <%= image_tag like.user.gravatar_url, class: "avatar-round w-6"%>
+      <% end %>
+    <% end %>
+    <span class="text-gray-400 italic text-sm font-bold">...and <%= reference.likes.count - 3 %> others </span>
+  <% end %>
+</div>
