@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ 'input', 'more' ]
+  static targets = [ 'input', 'more', 'delete' ]
   static values = { state: { type: Number, default: 0 } }
   pulse() {
     const input = this.inputTarget;
@@ -30,5 +30,17 @@ export default class extends Controller {
         comment.classList.remove('scale-1', 'relative');
       });
     };
+  }
+
+  showButton() {
+    const button = this.deleteTarget;
+    button.classList.remove('scale-0');
+    button.classList.add('scale-1');
+    this.element.addEventListener('mouseleave', () => {this.hideButton(button)})
+  }
+
+  hideButton(button) {
+    button.classList.remove('scale-1');
+    button.classList.add('scale-0');
   }
 }

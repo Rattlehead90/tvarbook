@@ -1,13 +1,18 @@
- 
 <div class="mt-2" data-controller="comment">
   <% reference.comments.each_with_index do |comment, i| %>
     <% if i < 3 %>
-      <div class="flex items-start gap-2 mt-2">
+      <div class="flex items-start gap-2 mt-2" 
+            data-controller="comment"
+            data-action="mouseover->comment#showButton">
         <%= image_tag comment.user.gravatar_url, class: 'avatar-round h-7 w-auto mt-2' %>
-        <div class="flex flex-col items-start bg-gray-100 rounded-3xl p-3">
+        <div class="flex flex-col items-start bg-gray-100 rounded-3xl px-3 py-2">
           <h4 class="text-sm font-bold"><%= comment.user.name %> <%= comment.user.last_name %></h4>
-          <p class=""><%= comment.body %></p>
+          <p><%= comment.body %></p>
         </div>
+        <%= button_to 'x', comments_destroy_path, data: { comment_target: :delete }, 
+                                                         class: "text-md left-[-2rem] scale-0 relative font-semibold text-red-400 transition", 
+                                                         params: { id: comment.id }, 
+                                                         method: :post %>
       </div>
     <% else %>
       <% if i == 3 %>
@@ -15,12 +20,18 @@
           See <%= reference.comments.count - i - 1 %> more...
         </p>
       <% elsif i > 3 %>
-        <div class="flex items-start gap-2 mt-2 scale-0 absolute">
+        <div class="flex items-start gap-2 mt-2 scale-0 absolute" 
+             data-controller="comment" 
+             data-action="mouseover->comment#showButton">
           <%= image_tag comment.user.gravatar_url, class: 'avatar-round h-7 w-auto mt-2' %>
           <div class="flex flex-col items-start bg-gray-100 rounded-3xl p-3">
             <h4 class="text-sm font-bold"><%= comment.user.name %> <%= comment.user.last_name %></h4>
-            <p class=""><%= comment.body %></p>
+            <p><%= comment.body %></p>
           </div>
+          <%= button_to 'x', comments_destroy_path, data: { comment_target: :delete }, 
+                                                         class: "text-md left-[-2rem] relative scale-0 font-semibold text-red-400 transition",
+                                                         params: { id: comment.id }, 
+                                                         method: :post %>
         </div>
       <% end %>
     <% end %>

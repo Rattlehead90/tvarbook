@@ -8,8 +8,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    comment = current_user.comments.find_by(post_id: params[:post_id],
-                                            user_id: params[:user_id])
+    comment = current_user.comments.find_by(id: params[:id])
     comment.destroy
 
     redirect_to root_path
