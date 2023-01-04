@@ -1,4 +1,4 @@
-<div class="flex flex-col bg-white p-4 rounded-xl my-4">
+<div class="flex flex-col bg-white p-4 rounded-md my-4">
   <div class="flex">
     <%= link_to user_path(post.user) do %>
       <%= image_tag post.user.gravatar_url, class: "avatar-round" %>
@@ -22,4 +22,28 @@
     <% end %>
   </div>
   <%= render 'shared/like_button', reference: post, type: "Post" %>
+
+  <div class="mt-2">
+    <% post.comments.each do |comment| %>
+      <div class="flex items-start gap-2 mt-2">
+        <%= image_tag current_user.gravatar_url, class: 'avatar-round h-7 w-auto mt-2' %>
+        <div class="flex flex-col items-start bg-gray-100 rounded-3xl p-3">
+          <h4 class="text-sm font-bold"><%= comment.user.name %> <%= comment.user.last_name %></h4>
+          <p class=""><%= comment.body %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="mt-4">
+    <%= form_with model: @comment, url: comments_create_path, method: :post, class: "flex items-center gap-2 h-8" do |form| %>
+      <%= link_to user_path(current_user) do %>
+        <%= image_tag current_user.gravatar_url, class: "avatar-round h-8 w-auto"%>
+      <% end %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+      <%= form.hidden_field :post_id, value: post.id %>
+      <%= form.text_field :body, class: "input-field text-sm h-8", placeholder: "Write a comment..." %>
+      <% form.submit %>
+    <% end %>
+  </div>
 </div>

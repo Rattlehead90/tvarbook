@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
     @post = current_user.posts.build
+    @comment = current_user.comments.build
     @like = current_user.likes.build
     @posts = if params[:query].present?
                Post.where('LOWER (body) LIKE LOWER (?)', "%#{params[:query]}%")

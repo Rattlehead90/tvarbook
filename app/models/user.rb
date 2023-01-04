@@ -30,7 +30,7 @@ class User < ApplicationRecord
     invitations.create(friend_id: user.id)
   end
 
-  # Likes mechanic
-
+  # Likes and comments mechanics
+  has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 end
