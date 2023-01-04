@@ -10,6 +10,9 @@ application.register("hello", HelloController)
 import InvitationsController from "./invitations_controller"
 application.register("invitations", InvitationsController)
 
+import LikeController from "./like_controller"
+application.register("like", LikeController)
+
 import LogoutController from "./logout_controller"
 application.register("logout", LogoutController)
 
