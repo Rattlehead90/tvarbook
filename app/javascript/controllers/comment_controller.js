@@ -14,7 +14,8 @@ export default class extends Controller {
 
   expand() {
     const more = this.moreTarget;
-    const loaded_comments = document.querySelectorAll('p~div');
+    const comment_div = this.element;
+    const loaded_comments = comment_div.querySelectorAll('p ~ div');
 
     this.stateValue++
     if (this.stateValue % 2 != 0) {
