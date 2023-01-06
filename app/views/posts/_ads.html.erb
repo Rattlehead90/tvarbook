@@ -1,17 +1,19 @@
-<div class="flex flex-col py-4 mx-6 gap-4">
-  <h2 class="font-semibold text-gray-500">Sponsored</h2>
-  <%= link_to 'https://github.com/Rattlehead90', class: "flex items-center" do %>
-    <%= image_tag 'github', class: "w-32 mr-4" %>
-    <div>
-      <h3 class="font-semibold">Check out this app's author's github profile!</h3>
-      <p>github.com</p>
-    </div>
-  <% end %>
-  <%= link_to 'https://www.linkedin.com/in/vadim-strogonov-3040b4169', class: "flex items-center" do %>
-    <%= image_tag 'linkedin', class: "w-32 mr-4" %>
-    <div>
-      <h3 class="font-semibold">And while you're at it, check out his LinkedIn too!</h3>
-      <p>linkedin.com</p>
-    </div>
-  <% end %>
+<div class="relative">
+  <div class="flex flex-col py-4 mx-6 gap-4 fixed top-16">
+    <h2 class="font-semibold text-gray-500">Sponsored</h2>
+    <%= link_to 'https://github.com/Rattlehead90', class: "flex items-center" do %>
+      <%= image_tag 'github', class: "w-32 mr-4" %>
+      <div>
+        <h3 class="font-semibold">Check out this app's author's github profile!</h3>
+        <p>github.com</p>
+      </div>
+    <% end %>
+    <%= link_to 'https://www.linkedin.com/in/vadim-strogonov-3040b4169', class: "flex items-center" do %>
+      <%= image_tag 'linkedin', class: "w-32 mr-4" %>
+      <div>
+        <h3 class="font-semibold">And while you're at it, check out his LinkedIn too!</h3>
+        <p>linkedin.com</p>
+      </div>
+    <% end %>
+  </div>
 </div>

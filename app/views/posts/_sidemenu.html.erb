@@ -1,33 +1,33 @@
-<div class="flex flex-col max-w-xs p-4 gap-2">
-  <div class="flex flex-col">
-    <%= link_to '', class: "sidemenu-option" do %> 
+<div class="flex flex-col max-w-xs px-4 gap-2 relative">
+  <div class="flex flex-col sticky top-16 py-4">
+    <%= link_to '', class: "sidemenu-option" do %>
       <%= image_tag('home', class: "w-7") %>Home
     <% end %>
-    <%= link_to user_path(current_user), class: "sidemenu-option w-auto" do %> 
+    <%= link_to user_path(current_user), class: "sidemenu-option w-auto" do %>
       <%= image_tag(current_user.gravatar_url, class: "avatar-round w-7") %>
       <%= current_user.name %> <%= current_user.last_name %>
     <% end %>
     <hr class="h-[1px] border-none text-gray-300 bg-gray-300">
-    <%= link_to '', class: "sidemenu-option" do %> 
+    <%= link_to '', class: "sidemenu-option" do %>
       <%= image_tag('play', class: "w-7") %>Watch
     <% end %>
-    <%= link_to '', class: "sidemenu-option" do %> 
+    <%= link_to '', class: "sidemenu-option" do %>
       <%= image_tag('candidates', class: "w-7") %>Friends
     <% end %>
-    <%= link_to '', class: "sidemenu-option" do %> 
+    <%= link_to '', class: "sidemenu-option" do %>
       <%= image_tag('booth', class: "w-7") %>Marketplace
     <% end %>
-    <%= link_to '', class: "sidemenu-option" do %> 
+    <%= link_to '', class: "sidemenu-option" do %>
       <%= image_tag('joystick', class: "w-7") %>Gaming
     <% end %>
-    <%= link_to '', class: "sidemenu-option" do %> 
+    <%= link_to '', class: "sidemenu-option" do %>
       <%= image_tag('menu', class: "w-7") %>See all
     <% end %>
     <hr class="h-[1px] border-none text-gray-300 bg-gray-300">
-  </div>
-  <div class="font-light text-md">
-    <%= link_to 'Author', '', class: "small-font-links" %>
-    <%= link_to 'Icons', '', class: "small-font-links" %>
-    <%= link_to 'Tech Stack', '', class: "small-font-links" %>
+    <div class="font-light text-md mt-2">
+      <%= link_to 'Author', '', class: "small-font-links" %>
+      <%= link_to 'Icons', '', class: "small-font-links" %>
+      <%= link_to 'Tech Stack', '', class: "small-font-links" %>
+    </div>
   </div>
 </div>

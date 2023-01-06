@@ -1,4 +1,4 @@
-<div class="flex justify-between h-14 items-center bg-white shadow-md px-4">
+<div class="flex justify-between h-14 items-center bg-white shadow-md px-4 fixed w-[100%]">
   <%= link_to 'tvářbook', root_path, class: "font-bold text-blue-500 text-3xl w-36" %>
   <% if current_page?(controller: 'posts', action: 'index') || current_page?(root_path) %>
     <%= form_with(url: posts_path, method: :get, data: { controller: "search-form", 
