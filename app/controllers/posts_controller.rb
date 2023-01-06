@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     @posts = if params[:query].present?
                Post.where('LOWER (body) LIKE LOWER (?)', "%#{params[:query]}%")
              else
-               Post.all
+               Post.order(created_at: :desc).limit(10)
              end
 
     if turbo_frame_request?
