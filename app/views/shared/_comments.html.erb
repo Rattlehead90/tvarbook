@@ -9,7 +9,7 @@
           <h4 class="text-sm font-bold"><%= comment.user.name %> <%= comment.user.last_name %></h4>
           <p><%= comment.body %></p>
         </div>
-        <%= button_to 'x', comments_destroy_path, data: { comment_target: :delete }, 
+        <%= button_to 'x', comments_destroy_path, data: { comment_target: :delete, turbo_confirm: "Delete comment?" }, 
                                                          class: "text-md left-[-2rem] scale-0 relative font-semibold text-red-400 transition", 
                                                          params: { id: comment.id }, 
                                                          method: :post %>
@@ -27,7 +27,7 @@
             <h4 class="text-sm font-bold"><%= comment.user.name %> <%= comment.user.last_name %></h4>
             <p><%= comment.body %></p>
           </div>
-          <%= button_to 'x', comments_destroy_path, data: { comment_target: :delete }, 
+          <%= button_to 'x', comments_destroy_path, data: { comment_target: :delete, turbo_confirm: "Delete comment?" }, 
                                                          class: "text-md left-[-2rem] relative scale-0 font-semibold text-red-400 transition",
                                                          params: { id: comment.id }, 
                                                          method: :post %>
@@ -41,7 +41,7 @@
             <h4 class="text-sm font-bold"><%= comment.user.name %> <%= comment.user.last_name %></h4>
             <p><%= comment.body %></p>
           </div>
-          <%= button_to 'x', comments_destroy_path, data: { comment_target: :delete }, 
+          <%= button_to 'x', comments_destroy_path, data: { comment_target: :delete, turbo_confirm: "Delete comment?" }, 
                                                          class: "text-md left-[-2rem] relative scale-0 font-semibold text-red-400 transition",
                                                          params: { id: comment.id }, 
                                                          method: :post %>
