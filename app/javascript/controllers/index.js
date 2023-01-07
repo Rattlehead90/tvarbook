@@ -19,5 +19,8 @@ application.register("like", LikeController)
 import LogoutController from "./logout_controller"
 application.register("logout", LogoutController)
 
+import PostPromptController from "./post_prompt_controller"
+application.register("post-prompt", PostPromptController)
+
 import SearchFormController from "./search_form_controller"
 application.register("search-form", SearchFormController)

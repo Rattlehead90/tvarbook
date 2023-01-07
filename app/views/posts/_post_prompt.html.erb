@@ -1,16 +1,21 @@
-<div class="bg-white rounded-xl p-4 flex flex-col justify-between h-36">
-    <div class="flex gap-2 mb-4">
-      <%= link_to user_path(current_user), class: "w-12 my-auto" do %>
+<div class="bg-white rounded-xl p-4 flex flex-col justify-between h-auto">
+    <div class="flex gap-2 mb-2 items-start">
+      <%= link_to user_path(current_user), class: "w-12 mt-2" do %>
         <%= image_tag current_user.gravatar_url, class: "avatar-round" %>
       <% end %>
-      <%= form_with model: @post, class: "w-[100%]" do |prompt| %>
-        <%= prompt.text_field :body, placeholder: "What's on your mind, #{current_user.name}?", class: "input-field" %>
+      <%= form_with model: @post, class: "w-[100%]", data: { controller: "post-prompt" } do |prompt| %>
+        <%= prompt.text_area :body, placeholder: "What's on your mind, #{current_user.name}?", 
+                                     class: "input-field resize-none mt-2", 
+                                     rows: 1,
+                                     data: { action: "input->post-prompt#expand focus->post-prompt#pulse",
+                                             post_prompt_target: :input} %>
+        <span class="text-sm text-gray-500"> <i>Enter</i> to post, <i>Shift + Enter </i> to add a new line </span>
         <% prompt.hidden_field :user_id, value: current_user.id %>
         <% prompt.submit %>
       <% end %>
     </div>
     <hr class="mb-4">
-    <div class="flex justify-around">
+    <div class="flex justify-around items-center">
       <div class="button-prompt">
         <%= image_tag 'video-camera-with-play-button', class: "w-8" %>
         <p>Live video</p>
