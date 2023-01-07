@@ -12,7 +12,10 @@
     <%= post.body %>
   </div>
   <%= render 'shared/likes_preview', reference: post %>
-  <%= render 'shared/like_button', reference: post, type: "Post" %>
+  <div class="flex gap-2 items-center mt-2">
+    <%= render 'shared/like_button', reference: post, type: "Post" %>
+    <%= render 'delete_button', reference: post %>
+  </div>
   <%= render 'shared/comments', reference: post %>
   <%= render 'shared/comment_prompt', reference: post %>
 </div>

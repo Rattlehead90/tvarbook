@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get 'users/show'
   devise_for :users
   resources :users, only: [:show]
-  resources :posts
+  resources :posts do
+    delete :destroy, on: :member
+  end
   post 'invitations/create'
   post 'invitations/destroy'
   post 'invitations/update'

@@ -1,0 +1,9 @@
+<% if reference.user == current_user %>
+  <div data-controller="like">
+    <%= button_to 'Delete', post_path(reference), method: :delete,
+                                                  data: { turbo_confirm: "Delete the post?",
+                                                          action: "click->like#spin",
+                                                          like_target: :button },
+                                                  class: "button-delete" %>
+  </div>
+<% end %>

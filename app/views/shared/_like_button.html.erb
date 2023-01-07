@@ -1,5 +1,5 @@
   <% if !reference.liked?(current_user) %>
-    <%= form_with model: @like, url: likes_create_path, method: :post, class: "mt-2" do |form| %>
+    <%= form_with model: @like, url: likes_create_path, method: :post do |form| %>
       <%= form.hidden_field :user_id, value: current_user.id %>
       <%= form.hidden_field :reference_id, value: reference.id %>
       <%= form.hidden_field :reference_type, value: "#{type}" %>
@@ -8,7 +8,7 @@
       </div>
     <% end %>
   <% else %>
-    <div class="mt-2" data-controller="like">
+    <div data-controller="like">
       <%= button_to 'Unlike', likes_destroy_path(reference_id: reference.id,
                                                  user_id: current_user.id),
                               method: :post, class: "button-like",
