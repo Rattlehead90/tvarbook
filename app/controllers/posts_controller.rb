@@ -4,9 +4,14 @@ class PostsController < ApplicationController
     @comment = current_user.comments.build
     @like = current_user.likes.build
     @posts = if params[:query].present?
-               Post.where('LOWER (body) LIKE LOWER (?)', "%#{params[:query]}%")
+               Post.where('LOWER (body) LIKE ? OR user_id IN (SELECT id FROM users WHERE LOWER (name) LIKE ?)',
+                          "%#{params[:query].downcase}%", "%#{params[:query].downcase}%")
              else
                Post.order(created_at: :desc).limit(10)
+                   .select do |post|
+                 post.user == current_user ||
+                   current_user.friends_with?(post.user)
+               end
              end
 
     if turbo_frame_request?
