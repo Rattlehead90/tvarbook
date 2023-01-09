@@ -94,6 +94,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    emoji_flag (0.1.1)
     erubi (1.11.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -234,6 +235,7 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.8)
+  emoji_flag
   gravtastic
   importmap-rails
   jbuilder

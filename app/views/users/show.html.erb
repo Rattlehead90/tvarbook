@@ -1,35 +1,20 @@
-<div class="flex flex-col justify-center items-center gap-4 mt-16">
-  <div class="flex flex-col items-center justify-center mt-12">
+<div class="flex flex-col justify-center items-center mt-16 gap-2">
+  <div class="flex flex-col items-center justify-center mt-12 gap-4">
     <%= image_tag @user.gravatar_url, class:"w-32 avatar-round mb-6" %>
     <p class="font-bold text-4xl"><%= @user.name %> <%= @user.last_name %></p>
+    <div class="shadow-md bg-white rounded-md p-4 w-52">
+      <p>Country: <%= @flag %></p>
+      <hr class="dotted-line">
+      <p>Birthday: <%= @user.dob.strftime("%-d %B")%></p>
+      <hr class="dotted-line">
+      <p>Age: <%= ((Time.zone.now - @user.dob.to_time)/1.year.seconds).floor %></p>
+    </div>
   </div>
-    <% unless @user == current_user %>
-      <% if !current_user.friends_with?(@user) %>
-        <% unless @invitation_not_sent %>
-          <%= button_to 'Add friend', invitations_create_path(id: @user.id), class: "button-friend" %>
-        <% else %>
-          <% if @invitation.user_id == @user.id %>
-            <div>Requests to be your friend: </div>
-            <%= button_to 'Accept', invitations_create_path(id: @user.id), class: "button-friend bg-green-300 hover:bg-green-600" %>
-            <%= button_to 'Decline', invitations_destroy_path(id: @user.id), class: "button-friend bg-red-300 hover:bg-red-600" %>
-          <% else %>
-            <%= button_to 'Request sent', invitations_destroy_path(id: @user.id), class: "button-friend bg-gray-300 hover:bg-red-500" %>
-          <% end %>
-        <% end %>
-      <% else %>
-        <%= button_to 'Friend', invitations_update_path(id: @user.id), class: "button-friend bg-green-600 hover:bg-red-500" %>
-      <% end %>
-    <% end %>
-  <h2>Friends:</h2>
-  <div class="mx-auto w-96 flex justify-center gap-5 items-center">
-
-    <% @friends.each do |friend| %>
-      <div>
-        <%= link_to user_path(friend), class: "flex flex-col items-center" do %>
-          <%= image_tag friend.gravatar_url, class: "avatar-round" %>
-          <%= friend.name[0] %>. <%= friend.last_name %>
-        <% end %>
-      </div>
-    <% end %>
+    <%= render 'friend_button' %>
+  <div class="flex">
+    <h2 class="self-left w-96 font-semibold">Friends:</h2>
+  </div>
+  <div class="shadow-md bg-white rounded-md p-2 w-96 flex overflow-y-scroll gap-2">
+    <%= render 'friends' %>
   </div>
 </div>

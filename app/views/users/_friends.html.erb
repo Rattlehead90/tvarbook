@@ -1,0 +1,10 @@
+<% @friends.each do |friend| %>
+  <div>
+    <%= link_to user_path(friend), class: "flex flex-col items-center" do %>
+      <div class="flex flex-col justify-center items-center text-center">
+        <%= image_tag friend.gravatar_url, class: "avatar-round" %>
+        <p class="text-sm w-24"><%= friend.name[0] %>. <%= friend.last_name %></p>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -56,6 +56,10 @@
   .button-delete {
     @apply flex hover:cursor-pointer items-center bg-gray-200 rounded-xl text-sm text-gray-50 font-bold px-2 py-1 hover:bg-red-500 hover:text-gray-100;
   }
+  
+  .dotted-line {
+    @apply border-dashed border-t-gray-400 h-1 scale-150 mx-auto w-[67%]; 
+  }
 }
 
 
