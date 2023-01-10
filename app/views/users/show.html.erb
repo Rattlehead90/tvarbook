@@ -1,7 +1,9 @@
-<div class="flex flex-col justify-center items-center mt-16 gap-3">
+<div class="flex flex-col justify-center items-center mt-16 gap-3 pb-8">
   <div class="flex flex-col items-center justify-center mt-12 gap-4">
-    <%= image_tag @user.gravatar_url, class:"w-32 avatar-round mb-6" %>
-    <p class="font-bold text-4xl"><%= @user.name %> <%= @user.last_name %></p>
+    <div class="flex justify-center items-center gap-2 mb-6">
+      <%= image_tag @user.gravatar_url, class:"w-32 avatar-round" %>
+      <p class="font-bold text-4xl"><%= @user.name %> <%= @user.last_name %></p>
+    </div>
     <div class="shadow-md bg-white rounded-md p-4 w-52">
       <p>Country: <%= @flag %></p>
       <hr class="dotted-line">
@@ -11,10 +13,27 @@
     </div>
   </div>
     <%= render 'friend_button' %>
-  <div class="flex">
-    <h2 class="self-left w-96 font-semibold">Friends:</h2>
-  </div>
-  <div class="shadow-md bg-white rounded-md p-2 w-96 grid grid-rows-2 grid-flow-col overflow-y-scroll gap-2">
-    <%= render 'friends' %>
+  <div class="flex flex-col space-between gap-12">
+    <div>
+      <div>
+        <h2 class="self-left w-96 font-semibold">Friends:</h2>
+      </div>
+      <div class="shadow-md bg-white rounded-md p-2 w-96 grid grid-rows-2 grid-flow-col overflow-y-scroll gap-2 h-36">
+        <%= render 'friends' %>
+      </div>
+    </div>
+    <div>
+      <div>
+        <h2 class="self-left w-96 font-semibold" >Posts: </h2>
+      </div>
+      <div class="shadow-md bg-white rounded-md p-2 w-96 flex flex-col overflow-y-scroll gap-2 h-36">
+        <% @user.posts.each do |post| %>
+          <div>
+            <%= post.body %>
+          </div>
+          <hr class="dotted-line">
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
