@@ -1,4 +1,4 @@
-<div class="flex flex-col justify-center items-center mt-16 gap-2">
+<div class="flex flex-col justify-center items-center mt-16 gap-3">
   <div class="flex flex-col items-center justify-center mt-12 gap-4">
     <%= image_tag @user.gravatar_url, class:"w-32 avatar-round mb-6" %>
     <p class="font-bold text-4xl"><%= @user.name %> <%= @user.last_name %></p>
@@ -14,7 +14,7 @@
   <div class="flex">
     <h2 class="self-left w-96 font-semibold">Friends:</h2>
   </div>
-  <div class="shadow-md bg-white rounded-md p-2 w-96 flex overflow-y-scroll gap-2">
+  <div class="shadow-md bg-white rounded-md p-2 w-96 grid grid-rows-2 grid-flow-col overflow-y-scroll gap-2">
     <%= render 'friends' %>
   </div>
 </div>
