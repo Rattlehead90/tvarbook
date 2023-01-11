@@ -1,0 +1,14 @@
+<div class="flex items-start gap-2 mt-2 <%= visibility %>" 
+            data-controller="comment"
+            data-action="mouseover->comment#showButton">
+  <%= link_to (image_tag comment.user.gravatar_url, class: 'avatar-round h-7 w-auto mt-2'), user_path(comment.user) %>
+  <div class="flex flex-col items-start bg-gray-100 rounded-3xl px-3 py-2 max-w-md">
+    <h4 class="text-sm font-bold"><%= comment.user.name %> <%= comment.user.last_name %></h4>
+    <p><%= comment.body %></p>
+  </div>
+  <%= button_to 'x', comments_destroy_path, data: { comment_target: :delete, turbo_confirm: "Delete comment?" }, 
+                                            class: "text-md left-[-2rem] scale-0 relative font-semibold text-red-400 transition", 
+                                            params: { id: comment.id }, 
+                                            method: :post, 
+                                            local: true %>
+</div>
