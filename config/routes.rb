@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :posts do
     delete :destroy, on: :member
+    get '/page/:page', action: :index, on: :collection
   end
   post 'invitations/create'
   post 'invitations/destroy'

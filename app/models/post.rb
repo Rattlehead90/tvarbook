@@ -3,6 +3,8 @@ class Post < ApplicationRecord
   has_many :likes, as: :reference, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  paginates_per 10
+
   def liked?(user)
     !likes.where(user: user).empty?
   end

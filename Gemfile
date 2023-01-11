@@ -79,3 +79,5 @@ gem "devise", "~> 4.8"
 gem "gravtastic"
 
 gem "emoji_flag"
+
+gem 'kaminari'

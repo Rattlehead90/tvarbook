@@ -7,11 +7,8 @@ class PostsController < ApplicationController
                Post.where('LOWER (body) LIKE ? OR user_id IN (SELECT id FROM users WHERE LOWER (name) LIKE ?)',
                           "%#{params[:query].downcase}%", "%#{params[:query].downcase}%")
              else
-               Post.order(created_at: :desc).limit(10)
-                   .select do |post|
-                 post.user == current_user ||
-                   current_user.friends_with?(post.user)
-               end
+               Post.order(created_at: :desc).page params[:page]
+                    
              end
 
     if turbo_frame_request?
