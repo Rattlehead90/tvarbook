@@ -1,8 +1,8 @@
 <% if !current_user.friends_with?(user) %>
-  <% unless @invitation_not_sent %>
+  <% unless invitation_not_sent %>
     <%= button_to 'Add friend', invitations_create_path(id: user.id), class: "button-friend" %>
   <% else %>
-    <% if @invitation.user_id == user.id %>
+    <% if invitation.user_id == user.id %>
       <div>Requests to be your friend: </div>
       <%= button_to 'Accept', invitations_create_path(id: user.id), class: "button-friend bg-green-300 hover:bg-green-600" %>
       <%= button_to 'Decline', invitations_destroy_path(id: user.id), class: "button-friend bg-red-300 hover:bg-red-600" %>
