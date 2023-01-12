@@ -60,6 +60,10 @@
   .dotted-line {
     @apply border-dashed border-t-gray-400 h-1 scale-150 mx-auto w-[67%]; 
   }
+
+  .pagination {
+    @apply flex items-center font-semibold justify-center gap-3;
+  }
 }
 
 

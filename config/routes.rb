@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get 'users/show'
   get 'users/index'
   devise_for :users
-  resources :users, only: [:show]
+  resources :users do 
+    get 'page/:page', action: :index, on: :collection
+  end
   resources :posts do
     delete :destroy, on: :member
     get '/page/:page', action: :index, on: :collection

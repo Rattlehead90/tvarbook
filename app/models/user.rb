@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :posts, dependent: :destroy
 
+  paginates_per 10
+
   # Friendship mechanics
   has_many :invitations
   has_many :pending_invitations, -> { where confirmed: false }, class_name: 'Invitation',
