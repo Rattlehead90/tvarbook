@@ -1,0 +1,14 @@
+<div class="mt-16">
+  <div class="bg-white rounded-md p-4 w-1/2 mx-auto">
+    <ul class="mx-auto w-3/4">
+      <% @users.each do |user| %>
+        <li class="flex justify-center">
+          <p><%= user.name %><%= user.last_name %></p>
+          <div>
+            <%= Invitation.find_invitation(current_user.id, user.id, true)&.confirmed? %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

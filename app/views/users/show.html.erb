@@ -2,17 +2,19 @@
   <div class="flex flex-col items-center justify-center mt-12 gap-4">
     <div class="flex justify-center items-center gap-2 mb-6">
       <%= image_tag @user.gravatar_url, class:"w-32 avatar-round" %>
-      <p class="font-bold text-4xl"><%= @user.name %> <%= @user.last_name %></p>
-    </div>
-    <div class="shadow-md bg-white rounded-md p-4 w-52">
-      <p>Country: <%= @flag %></p>
-      <hr class="dotted-line">
-      <p>Birthday: <%= @user.dob.strftime("%-d %B")%></p>
-      <hr class="dotted-line">
-      <p>Age: <%= ((Time.zone.now - @user.dob.to_time)/1.year.seconds).floor %></p>
+      <div class="flex flex-col items-start justify-start gap-1">
+        <p class="font-bold text-3xl"><%= @user.name %> <%= @user.last_name %></p>
+        <div class="shadow-md bg-white rounded-md p-4 w-64">
+          <p>Country: <%= @flag %></p>
+          <hr class="dotted-line">
+          <p>Birthday: <%= @user.dob.strftime("%-d %B")%></p>
+          <hr class="dotted-line">
+          <p>Age: <%= ((Time.zone.now - @user.dob.to_time)/1.year.seconds).floor %></p>
+        </div>
+      </div>
     </div>
   </div>
-    <%= render 'friend_button' %>
+  <%= render 'friend_button' %>
   <div class="flex flex-col space-between gap-3">
     <div>
       <div>

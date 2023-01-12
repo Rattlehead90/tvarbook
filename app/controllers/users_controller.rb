@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def index
+    @users = User.all
+  end
+
   def show
     @user = params[:id].nil? ? current_user : User.find(params[:id])
     @friends = @user.friends
