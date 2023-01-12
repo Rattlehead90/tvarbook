@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
+    @user = current_user
+    @invitation_not_sent = Invitation.request_sent?(current_user.id, @user.id)
+    @invitation = Invitation.find_invitation(@user.id, current_user.id)
   end
 
   def show

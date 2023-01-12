@@ -1,18 +1,16 @@
-<% unless @user == current_user %>
-  <% if !current_user.friends_with?(@user) %>
-    <% unless @invitation_not_sent %>
-      <%= button_to 'Add friend', invitations_create_path(id: @user.id), class: "button-friend" %>
-    <% else %>
-      <% if @invitation.user_id == @user.id %>
-        <div>Requests to be your friend: </div>
-        <%= button_to 'Accept', invitations_create_path(id: @user.id), class: "button-friend bg-green-300 hover:bg-green-600" %>
-        <%= button_to 'Decline', invitations_destroy_path(id: @user.id), class: "button-friend bg-red-300 hover:bg-red-600" %>
-      <% else %>
-        <%= button_to 'Request sent', invitations_destroy_path(id: @user.id), class: "button-friend bg-gray-300 hover:bg-red-500" %>
-      <% end %>
-    <% end %>
+<% if !current_user.friends_with?(user) %>
+  <% unless @invitation_not_sent %>
+    <%= button_to 'Add friend', invitations_create_path(id: user.id), class: "button-friend" %>
   <% else %>
-    <%= button_to 'Friend', invitations_update_path(id: @user.id), class: "button-friend bg-green-600 hover:bg-red-500",
-    data: { turbo_confirm: "Do you want to end friendship with #{@user.name} #{@user.last_name}?" } %>
+    <% if @invitation.user_id == user.id %>
+      <div>Requests to be your friend: </div>
+      <%= button_to 'Accept', invitations_create_path(id: user.id), class: "button-friend bg-green-300 hover:bg-green-600" %>
+      <%= button_to 'Decline', invitations_destroy_path(id: user.id), class: "button-friend bg-red-300 hover:bg-red-600" %>
+    <% else %>
+      <%= button_to 'Request sent', invitations_destroy_path(id: user.id), class: "button-friend bg-gray-300 hover:bg-red-500" %>
+    <% end %>
   <% end %>
+<% else %>
+  <%= button_to 'Friend', invitations_update_path(id: user.id), class: "button-friend bg-green-600 hover:bg-red-500",
+  data: { turbo_confirm: "Do you want to end friendship with #{user.name} #{user.last_name}?" } %>
 <% end %>

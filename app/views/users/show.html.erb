@@ -14,28 +14,38 @@
       </div>
     </div>
   </div>
-  <%= render 'friend_button' %>
+  <% unless @user == current_user %>
+    <%= render 'friend_button', user: @user %>
+  <% end %>
   <div class="flex flex-col space-between gap-3">
-    <div>
+    <% unless @friends.empty? %>
       <div>
-        <h2 class="self-left w-96 font-semibold">Friends:</h2>
+        <div>
+          <h2 class="self-left w-96 font-semibold">Friends:</h2>
+        </div>
+        <div class="shadow-md bg-white rounded-md p-2 w-96 grid grid-rows-2 grid-flow-col overflow-y-scroll gap-2 h-36">
+          <%= render 'friends' %>
+        </div>
       </div>
-      <div class="shadow-md bg-white rounded-md p-2 w-96 grid grid-rows-2 grid-flow-col overflow-y-scroll gap-2 h-36">
-        <%= render 'friends' %>
-      </div>
-    </div>
-    <div>
+    <% else %>
+      <p class="text-center bg-gray-50 rounded-md shadow-md p-2 w-96 hover:bg-gray-50 hover:shadow-xl transition-all"><%= @user.name %> has no friends yet 😔</p>
+    <% end %>
+    <% unless @user.posts.empty? %>
       <div>
-        <h2 class="self-left w-96 font-semibold" >Posts: </h2>
+        <div>
+          <h2 class="self-left w-96 font-semibold" >Posts: </h2>
+        </div>
+        <div class="shadow-md bg-white rounded-md p-2 w-96 flex flex-col overflow-y-scroll gap-2 h-36">
+          <% @user.posts.each do |post| %>
+            <div>
+              <%= post.body %>
+            </div>
+            <hr class="dotted-line">
+          <% end %>
+        </div>
       </div>
-      <div class="shadow-md bg-white rounded-md p-2 w-96 flex flex-col overflow-y-scroll gap-2 h-36">
-        <% @user.posts.each do |post| %>
-          <div>
-            <%= post.body %>
-          </div>
-          <hr class="dotted-line">
-        <% end %>
-      </div>
-    </div>
+    <% else %>
+      <p class="text-center bg-gray-50 rounded-md shadow-md p-2 w-96 hover:bg-gray-50 hover:shadow-xl transition-all"><%= @user.name %> has no posts yet 😢</p>
+    <% end %>
   </div>
 </div>
