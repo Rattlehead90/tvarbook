@@ -2,12 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 @layer components {
-  .btn-login {
-    @apply ;
-  }
 
   .input-login {
     @apply border-gray-300 rounded-lg w-[360px] h-14 mx-auto;
@@ -63,6 +58,10 @@
 
   .pagination {
     @apply flex items-center font-semibold justify-center gap-3;
+  }
+
+  .field-signup {
+    @apply bg-gray-100 rounded-md p-2 font-light border-gray-400 focus:ring-0 mt-2 w-full;
   }
 }
 

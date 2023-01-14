@@ -1,29 +1,65 @@
-<h2>Sign up</h2>
+<div class="flex items-center justify-center p-20">
+  <div class="bg-white rounded-md p-3 flex flex-col justify-center ">
+    <div>
+      <h2 class="font-semibold text-3xl">Sign up</h2>
+      <p class="text-gray-400 italic text-sm">It's quick and easy.</p>
+    </div>
+    <hr class="dotted-line my-2">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="flex justify-between gap-2 w-full">
+        <div class="field">
+          <%= f.text_field :name, placeholder: "First name",
+                                  autocomplete: "name",
+                                  autofocus: true,
+                                  required: true,
+                                  class: "field-signup" %>
+        </div>
+    
+         <div class="field">
+          <%= f.text_field :last_name, placeholder: "Last name",
+                                       autocomplete: "last_name",
+                                       required: true,
+                                       class: "field-signup" %>
+        </div>
+      </div>
+    
+      <div class="field">
+        <%= f.email_field :email, placeholder: "Email", 
+                                  autocomplete: "email",
+                                  required: true,
+                                  class: "field-signup" %>
+      </div>
+    
+      <div class="field">
+        <%= f.password_field :password, placeholder: "New password (6 characters min)",
+                              autocomplete: "new-password",
+                              class: "field-signup" %>
+      </div>
+    
+      <div class="field">
+        <%= f.password_field :password_confirmation, placeholder: "Enter the password again", 
+                                                     autocomplete: "new-password",
+                                                     class: "field-signup" %>
+      </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="field">
+        <%= f.date_field :dob, placeholder: "Date of birth", 
+                               autocomplete: "dob",
+                               class: "field-signup" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="field">
+        <% countries = ['cs', 'en_US', 'ru', 'uk', 'es', 'it', 'de', 'fr', 'en', 'pt'] %>
+        <% flags = countries.map { |code| EmojiFlag.new(code) } %>
+        <div class="mt-2 text-gray-500 field-signup">Country: <%= f.select(:country, options_for_select(flags.zip(countries))) %></div>
+      </div>
+    
+      <div class="actions text-center mt-2">
+        <%= f.submit "Sign up", class: "button-login bg-green-500 hover:bg-green-600" %>
+      </div>
+    <% end %>
+    
+    <div class="flex flex-col items-center justify-center"><%= render "devise/shared/links" %></div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
