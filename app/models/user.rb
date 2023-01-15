@@ -3,7 +3,7 @@ class User < ApplicationRecord
   gravtastic
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable
+         :recoverable, :rememberable, :validatable
   has_many :posts, dependent: :destroy
 
   paginates_per 10
