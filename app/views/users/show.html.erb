@@ -7,7 +7,7 @@
         <div class="shadow-md bg-white rounded-md p-4 w-64">
           <p>Country: <%= @flag %></p>
           <hr class="dotted-line">
-          <p>Birthday: <%= @user.dob.strftime("%-d %B")%></p>
+          <p>Birthday: <%= @user&.dob.strftime("%-d %B")%></p>
           <hr class="dotted-line">
           <p>Age: <%= ((Time.zone.now - @user.dob.to_time)/1.year.seconds).floor %></p>
         </div>
