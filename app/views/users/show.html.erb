@@ -4,13 +4,15 @@
       <%= image_tag @user.gravatar_url, class:"w-32 avatar-round" %>
       <div class="flex flex-col items-start justify-start gap-1">
         <p class="font-bold text-3xl"><%= @user&.name %> <%= @user&.last_name %></p>
-        <div class="shadow-md bg-white rounded-md p-4 w-64">
-          <p>Country: <%= @flag %></p>
-          <hr class="dotted-line">
-          <p>Birthday: <%= @user&.dob&.strftime("%-d %B")%></p>
-          <hr class="dotted-line">
-          <p>Age: <%= ((Time.zone.now - @user&.dob&.to_time)/1.year.seconds).floor %></p>
-        </div>
+        <% if @user.dob %>
+          <div class="shadow-md bg-white rounded-md p-4 w-64">
+            <p>Country: <%= @flag %></p>
+            <hr class="dotted-line">
+            <p>Birthday: <%= @user.dob.strftime("%-d %B")%></p>
+            <hr class="dotted-line">
+            <p>Age: <%= ((Time.zone.now - @user.dob.to_time)/1.year.seconds).floor %></p>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
