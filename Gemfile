@@ -81,3 +81,7 @@ gem "gravtastic"
 gem "emoji_flag"
 
 gem 'kaminari'
+
+gem 'omniauth-facebook'
+
+gem 'omniauth-rails_csrf_protection'
