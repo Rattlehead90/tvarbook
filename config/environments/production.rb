@@ -92,7 +92,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Mailer
-  config.action_mailer.default_url_options = {host:'tvarbook.herokuapp.com'}
+  config.action_mailer.default_url_options = {host:'https://api.sendgrid.com/v3/'}
 
   ActionMailer::Base.smtp_settings = {
     :user_name => 'apikey',
