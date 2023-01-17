@@ -63,6 +63,10 @@
   .field-signup {
     @apply bg-gray-100 rounded-md p-2 font-light border-gray-400 focus:ring-0 mt-2 w-full;
   }
+
+  .flaticon-author {
+    @apply text-green-600 w-56 mx-auto mb-3 font-bold text-xl p-2 bg-white rounded-md;
+  }
 }
 
 
