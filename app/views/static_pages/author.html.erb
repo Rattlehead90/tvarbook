@@ -1,0 +1,13 @@
+<div class="mt-16">
+  <div class="flex flex-col gap-3 justify-center items-center">
+    <%= image_tag 'me', class:"w-72 object-cover h-72 rounded-full" %>
+    <div class="shadow-md bg-white rounded-md p-4 w-64">
+      <p>Country: <%= EmojiFlag.new('ru') %></p>
+      <hr class="dotted-line">
+      <p>Birthday: 17 November 1997 </p>
+      <hr class="dotted-line">
+      <p>Age: <%= ((Time.zone.now - '17-11-1997'.to_time)/1.year.seconds).floor %></p>
+    </div>
+    <p class="w-[720px]">Hi, my name is <b>Vadim</b> and I'm the author of this page. This was my final <a href="https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project" class="text-red-700 font-bold hover:animate-pulse transition-all">Ruby on Rails</a> project before moving on to things I'm <span class="underline underline-offset-2 decoration-blue-700">really interested in</span>. I truly hope that this demo app does a good job in showcasing my skills as a webdevelopper. Have a nice day! </p>
+  </div>
+</div>

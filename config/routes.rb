@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get '/author', to: "static_pages#author"
+  get '/icons', to: "static_pages#icons"
+  get '/tech_stack', to: "static_pages#tech_stack"
   post 'comments/create'
   post 'comments/destroy'
   patch 'comments/update'
