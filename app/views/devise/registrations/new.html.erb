@@ -15,51 +15,47 @@
                                   required: true,
                                   class: "field-signup" %>
         </div>
-    
-         <div class="field">
+        <div class="field">
           <%= f.text_field :last_name, placeholder: "Last name",
                                        autocomplete: "last_name",
                                        required: true,
                                        class: "field-signup" %>
         </div>
       </div>
-    
       <div class="field">
         <%= f.email_field :email, placeholder: "Email", 
                                   autocomplete: "email",
                                   required: true,
                                   class: "field-signup" %>
       </div>
-    
       <div class="field">
         <%= f.password_field :password, placeholder: "New password (6 characters min)",
                               autocomplete: "new-password",
                               class: "field-signup" %>
       </div>
-    
       <div class="field">
         <%= f.password_field :password_confirmation, placeholder: "Enter the password again", 
                                                      autocomplete: "new-password",
                                                      class: "field-signup" %>
       </div>
-
       <div class="field">
         <%= f.date_field :dob, placeholder: "Date of birth", 
                                autocomplete: "dob",
                                class: "field-signup" %>
       </div>
-
       <div class="field">
         <% countries = ['cs', 'en_US', 'ru', 'uk', 'es', 'it', 'de', 'fr', 'en', 'pt'] %>
         <% flags = countries.map { |code| EmojiFlag.new(code) } %>
         <div class="mt-2 text-gray-500 field-signup">Country: <%= f.select(:country, options_for_select(flags.zip(countries))) %></div>
       </div>
-    
       <div class="actions text-center mt-2">
         <%= f.submit "Sign up", class: "button-login bg-green-500 hover:bg-green-600" %>
       </div>
     <% end %>
-    
-    <div class="flex flex-col items-center justify-center"><%= render "devise/shared/links" %></div>
+    <div class="flex justify-center">
+      <%= button_to "Sign in with Facebook", user_facebook_omniauth_authorize_path,
+          method: :post,
+          class: "button-login",
+          data: { turbo: false } %>
+    </div>
   </div>
-</div>
