@@ -56,4 +56,16 @@ class User < ApplicationRecord
   def send_welcome_email
     UserMailer.welcome_email(self).deliver_now
   end
+
+  # Validations 
+
+  validates :name, presence: true, length: { maximum: 50 }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, length: { maximum: 255 },
+                    format: { with: VALID_EMAIL_REGEX }
+  validates :last_name, length: { maximum: 75 }
+  validates :dob, comparison: { greater_than: '31-12-1899'.to_date,
+                               less_than: Time.now }
+  COUNTRIES = ['cs', 'en_US', 'ru', 'uk', 'es', 'it', 'de', 'fr', 'en', 'pt']
+  validates :country, inclusion: { in: COUNTRIES }
 end

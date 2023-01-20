@@ -8,4 +8,8 @@ class Post < ApplicationRecord
   def liked?(user)
     !likes.where(user: user).empty?
   end
+
+  validates :body, presence: true, length: { maximum: 760 }
+
+
 end
