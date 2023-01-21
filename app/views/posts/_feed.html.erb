@@ -3,5 +3,7 @@
   <div>
     <%= render "posts", posts: @posts %>
   </div>
-  <div class="pagination"><%= paginate @posts %></div>
+  <% unless !params[:query].nil? %>
+    <div class="pagination b-0"><%= paginate @posts %></div>
+  <% end %>
 </div>
